@@ -1,0 +1,9 @@
+name: test2Workflow-test
+on: push
+
+jobs:
+  echoEvent: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: trying to print github event name 
+        run: echo "i am triggered with ${{github.event_name}} event"
