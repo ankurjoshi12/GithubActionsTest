@@ -11,4 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: trying to print github event name 
-        run: echo "i am triggered with ${{github.event_name}} event"
+        run: echo "i am triggered with ${{github.event_name}} event and OS is ${{runner.os}}"
+        
