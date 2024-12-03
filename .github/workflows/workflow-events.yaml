@@ -1,5 +1,10 @@
 name: test2Workflow-test
-on: push
+on: 
+    push:
+    pull_request: 
+    schedule:
+      - cron: '* 0/5 * * *'
+    workflow_dispatch: 
 
 jobs:
   echoEvent: 
