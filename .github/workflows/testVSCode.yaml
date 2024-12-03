@@ -1,0 +1,26 @@
+name: Install Chocolatey and VS Code
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: windows-latest
+    steps:
+      - name: Set up Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force;
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+      - name: Verify Chocolatey Installation
+        run: choco --version
+
+      - name: Install Visual Studio Code
+        run: choco install vscode -y
+
+      - name: Verify VS Code Installation
+        run: code --version

@@ -18,4 +18,22 @@ jobs:
     steps:
       - name: trying to print github event name 
         run: echo "i am triggered with ${{github.event_name}} event and OS is ${{runner.os}}"
+
+  windowRunner:
+    runs-on: windows-latest
+    steps:
+     - name: Set up Chocolatey
+        run: |
+            Set-ExecutionPolicy Bypass -Scope Process -Force;
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+            iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
+
+     - name: "Verify Chocolatey Installation"
+        run: choco --version
+
+     - name: Install Visual Studio Code
+        run: choco install vscode -y
+
+    - name: "Verify VS Code Installation"
+        run: code --version
         
