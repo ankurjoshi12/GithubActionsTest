@@ -19,8 +19,9 @@ jobs:
       - name: Verify Chocolatey Installation
         run: choco --version
 
-      - name: Install Visual Studio Code
-        run: choco install vscode -y
+      - name: Install Visual Studio 2022 Community
+        run: choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait"
 
-      - name: Verify VS Code Installation
-        run: code --version
+      - name: Verify Visual Studio Installation
+        run: |
+         & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
