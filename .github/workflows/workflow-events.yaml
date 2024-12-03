@@ -12,4 +12,10 @@ jobs:
     steps:
       - name: trying to print github event name 
         run: echo "i am triggered with ${{github.event_name}} event and OS is ${{runner.os}}"
+
+  windowecho:
+    runs-on: windows-latest
+    steps:
+      - name: trying to print github event name 
+        run: echo "i am triggered with ${{github.event_name}} event and OS is ${{runner.os}}"
         
