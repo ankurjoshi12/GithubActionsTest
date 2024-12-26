@@ -11,7 +11,7 @@ on:
             default: 'https://www.google.com/'
 jobs: 
     docker_file_test:
-        runs-on: windows-2019
+        runs-on:  ubuntu-latest
         steps:
             - name : Checkout code
               uses: actions/checkout@v3
