@@ -1,5 +1,8 @@
 name: test1-buildingblocks
-on: push
+on: 
+  push:
+  schedule:
+    - cron: '* * * 1 *'
 
 jobs: 
   echo-hello:

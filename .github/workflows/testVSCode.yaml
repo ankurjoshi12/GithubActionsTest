@@ -10,18 +10,20 @@ jobs:
   setup:
     runs-on: windows-latest
     steps:
-      - name: Set up Chocolatey
-        run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force;
-          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+        - name: Set up Chocolatey
+          run: |
+            Set-ExecutionPolicy Bypass -Scope Process -Force;
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+            iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-      - name: Verify Chocolatey Installation
-        run: choco --version
+        - name: Verify Chocolatey Installation
+          run: choco --version
 
-      - name: Install Visual Studio 2022 Community
-        run: choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait"
+        - name: Install Visual Studio 2022 Community
+          run: choco install visualstudio2022community --package-parameters "--add Microsoft.VisualStudio.Workload.CoreEditor --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait"
 
-      - name: Verify Visual Studio Installation
-        run: |
-         & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
+        - name: Verify Visual Studio Installation
+          run: |
+             & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe' -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
+        - name: Install and verfiy IIS 
+          run: 

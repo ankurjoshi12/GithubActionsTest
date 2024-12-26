@@ -14,10 +14,10 @@ jobs:
         runs-on: windows-2019
         steps:
             - name : Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v3
             
             - name: test docker run 
-              uses: ./github/workflow/actions/docker-test
+              uses: ./github/workflows/actions/docker-test
 
 
 # jobs:
