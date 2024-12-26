@@ -1,0 +1,6 @@
+name: Build And Run Docker images test
+description: This is try to create docker file and run it using custom Actions 
+
+runs: 
+    using: docker
+    images: Dockerfile
